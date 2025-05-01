@@ -1,23 +1,36 @@
-<!doctype HTML>
-<html>
-<!-- A-Frame ライブラリの読み込み -->
-<script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
-<!-- AR.js ライブラリの読み込み -->
-<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"></script>
-<body style='margin : 0px; overflow: hidden;'>
-<a-scene embedded arjs="debugUIEnabled:false;trackingMethod:best;" vr-mode-ui="enabled: false">
-    <a-assets>
-        <a-asset-item id="animated-asset" src="model_obj/santa/asset.glb"></a-asset-item>
-        <a-asset-item id="santa-obj" src="model_obj/santa/npca.obj"></a-asset-item>
-        <a-asset-item id="santa-mtl" src="model_obj/santa/npca.mtl"></a-asset-item>
-    </a-assets>
-    <a-marker preset="hiro">
-        <a-entity id="bowser-model" scale="0.4 0.4 0.4" position="0 0 0" rotation="90 -90 90",gltf-model="#animated-asset">
-        </a-entity>
-        <!-- a-obj-model id="santa" src="#santa-obj" mtl="#santa-mtl" position="0 0 0" scale="0.3 0.3 0.3" rotation="90 -90 90"></a-obj-model>
-        <a-text value="Merry X'mas!!!" position="0 1.3 0" align="center"></a-text-->
-    </a-marker>
-    <a-entity camera></a-entity>
-</a-scene>
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- A-Frame を読み込む -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <!-- AR.js を読み込む -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <title>任意のページタイトル</title>
+</head>
+
+<body style="margin: 0; overflow: hidden">
+
+    <!-- A-FrameにAR.jsを紐づけ、VRボタン非表示、深度バッファ追加 -->
+    <a-scene embedded arjs vr-mode-ui="enabled: false;" renderer="logarithmicDepthBuffer: true;">
+
+        <!-- 3DCGモデルを読み込む -->
+        <a-assets>
+            <a-asset-item id="tiger" src="./model_obj/santa/asset.glb"></a-asset-item>
+        </a-assets>
+
+        <!-- マーカーの.pattファイルを読み込む -->
+        <a-marker preset="hiro">
+            <!-- 3Dモデルを呼び出す -->
+            <a-entity gltf-model="#tiger"></a-entity>
+        </a-marker>
+
+        <!-- カメラを追加 -->
+        <a-entity camera></a-entity>
+    </a-scene>
 </body>
+
 </html>
